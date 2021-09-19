@@ -1,2 +1,6 @@
-# easyHat
-an easy way to use hardhat
+# For Easy Portfolio Tracks
+
+```shell
+#track kst pool value
+node scripts/kstinfos.js
+```
