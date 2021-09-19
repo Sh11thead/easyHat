@@ -363,3 +363,5 @@ node_modules
 cache
 artifacts
 secret.json
+package-lock.json
+.idea
