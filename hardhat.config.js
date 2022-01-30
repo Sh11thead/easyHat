@@ -19,12 +19,17 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  defaultNetwork: "okex",
+  defaultNetwork: "local",
   networks: {
     okex: {
       url: `https://exchainrpc.okex.org`,
       accounts: account
-    }
+    },
+    local: {
+      url: `http://127.0.0.1:8545`,
+      accounts: account,
+      timeout: 100000
+    },
   },
 
   solidity: {
