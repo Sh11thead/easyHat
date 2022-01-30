@@ -43,7 +43,10 @@ async function main() {
     let kstoktPendingKst = await kstlpDepositPool.pendingKst(7,userToview);
     let kstoktDepositMeta = await kstlpDepositPool.userInfo(7,userToview);
 
-    let allKstIncludePending = kstsingleDepositMeta[0]/1e18 + kstsinglePendingKst/1e18 + kstoktPendingKst/1e18;
+    let userkstbal = await kst.balanceOf(userToview);
+    console.log(`user kst bal ${userkstbal/1e18}`)
+
+    let allKstIncludePending =userkstbal/1e18+ kstsingleDepositMeta[0]/1e18 + kstsinglePendingKst/1e18 + kstoktPendingKst/1e18;
 
     console.log(`allKstIncludePending ${allKstIncludePending} , value ${kstPrice * allKstIncludePending} `);
     console.log(`kstOktLp in Pool ${kstoktDepositMeta[0]/1e18}, value ${kstoktDepositMeta[0]/1e18 * kstOktLpPrice }`);
