@@ -29,10 +29,10 @@ async function main() {
 
 
     let overrides = {
-        value: ethers.utils.parseUnits("0.035", 'ether')
+        value: ethers.utils.parseUnits("0.07", 'ether')
     };
 
-    await mochi.mint(1,overrides);
+    await mochi.mint(2,overrides);
 
 }
 
