@@ -19,10 +19,18 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  defaultNetwork: "local",
+  defaultNetwork: "smartbch",
   networks: {
+    eth: {
+      url: `https://nodes.mewapi.io/rpc/eth`,
+      accounts: account
+    },
     okex: {
       url: `https://exchainrpc.okex.org`,
+      accounts: account
+    },
+    smartbch: {
+      url: `https://smartbch.fountainhead.cash/mainnet`,
       accounts: account
     },
     local: {
@@ -34,6 +42,15 @@ module.exports = {
 
   solidity: {
     compilers: [
+      {
+        version: "0.8.11",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          }
+        }
+      },
       {
         version: "0.7.3",
         settings: {

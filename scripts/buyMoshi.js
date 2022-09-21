@@ -9,30 +9,31 @@ async function main() {
    //Edit these
 
     let MochiAbi = [
-    "function mint(uint256) payable",
+    "function mintHedgie(uint256,bytes32[])",
     "function publicSaleOpen() view returns (bool)",
     ]
-    let MochiAddr = "0x5a0d4479aed030305a36a1fb516346d533e794fb";
-
+    let MochiAddr = "0xf0d2d631A24Db247f5eb0421fA3E6A169C72565f";
     let mochi = await hre.ethers.getContractAt(MochiAbi,MochiAddr);
+
+/*    let mochi = await hre.ethers.getContractAt(MochiAbi,MochiAddr);
 
     let ok = false;
 
     while(!ok){
-        await sleep(5000);
+        await sleep(2000);
         ok = await mochi.publicSaleOpen();
         console.log("not fucking ok");
         if(ok){
             console.log("fucking ok");
         }
-    }
+    }*/
 
 
     let overrides = {
         value: ethers.utils.parseUnits("0.07", 'ether')
     };
 
-    await mochi.mint(2,overrides);
+    await mochi.mintHedgie(2,[]);
 
 }
 
