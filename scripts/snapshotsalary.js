@@ -58,22 +58,20 @@ async function main() {
 
   let ok = false;
 
+  //UTC 0:00
 
-  week = parseInt(Date.now()/1000/(86400*7));
- // week = 2728;
 
-  console.log(`current week ${week}`)
 
-  while (!ok) {
-    await sleep(60000);
-    nowweek = parseInt(Date.now()/1000/(86400*7));
-    if( nowweek > week ){
-      ok = true;
-    }else {
-      console.log(`current ts ${Date.now()/1000} week ${nowweek}, expect week ${week+1}`);
-    }
-    if (ok) {
-      console.log("fucking ok");
+  while (true) {
+    await sleep(10000);
+    const currentTime =  parseInt(Date.now()/1000);
+    const planTimeStart =(86400*7)* parseInt(currentTime / (86400*7)) + 30;
+    const planTimeEnd = (86400*7)*parseInt(currentTime / (86400*7)) + 45;
+
+    console.log(`current Time ${currentTime}, planTimeStart ${planTimeStart}, planTimeEnd ${planTimeEnd}`)
+    if(currentTime>= planTimeStart && currentTime<= planTimeEnd){
+      console.log(`go`);
+      break;
     }
   }
   await sleep(10000);
