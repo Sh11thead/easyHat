@@ -9,6 +9,18 @@ const {deployContract, wait, waitTx} = require("./utils");
 async function main() {
   //Edit these
 
+  while (true) {
+    await sleep(10000);
+    const currentTime =  parseInt(Date.now()/1000);
+    const planTimeStart = 1664582400;
+
+    console.log(`current Time ${currentTime}, planTimeStart ${planTimeStart}`)
+    if(currentTime>= planTimeStart ){
+      console.log(`go`);
+      break;
+    }
+  }
+
   let bABI = [
     "function sendLawToBarbarian() external",
   ]
